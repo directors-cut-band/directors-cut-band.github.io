@@ -1,4 +1,30 @@
+/* HELPERS */
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
 /* FIX */
+.l-box-lrg {
+  border: 0;
+}
+
+.content-wrapper {
+  background: none;
+}
+
+.content {
+  background: rgba(230,230,240, 0.8);
+  min-height: 100vh;
+}
+
+.content--dark {
+  background: rgba(180,180,190, 0.8);
+}
+
 .pure-button {
     background-color: #1f8dd6;
     color: white;
@@ -28,13 +54,15 @@ a.pure-button-primary:hover {
 }
 
 .splash {
-  height: 70%;
+  width: 100%;
   position: initial;
 }
 
 .splash-head {
-  font-size: 20px;
-  padding: 20px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  padding: 0;
+  border: none;
 }
 
 .splash-head .cover, .splash-head .links {
@@ -52,6 +80,14 @@ a.pure-button-primary:hover {
   display: grid;
 }
 
+.splash-subhead {
+  text-align: center;
+}
+
+.content-wrapper {
+  top: 92%;
+}
+
 .pure-button-container {
   margin: auto;
   width: 8rem;
@@ -67,12 +103,4 @@ a.pure-button-primary:hover {
   text-overflow: ellipsis;
   height: 4rem;
   font-size: 1.8rem;*/
-}
-
-.splash-head .links a i {
-  float: right;
-}
-
-.content-wrapper {
-  background: rgba(230,230,240, 0.8);
 }
