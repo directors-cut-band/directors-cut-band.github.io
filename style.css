@@ -65,19 +65,23 @@ a.pure-button-primary:hover {
   border: none;
 }
 
-.splash-head .cover, .splash-head .links {
-  padding: 10px;
-  max-height: 300px;
-  padding-bottom: 0;
-}
-
 .splash-head .cover img {
   max-height: 280px;
 }
 
-.splash-head .links {
+.album-links {
+  margin-top: 1rem;
+}
+
+.lp-container {
+  max-width: 500px;
   margin: auto;
-  display: grid;
+}
+
+.album-links a {
+  font-size: 1.8rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .splash-subhead {
@@ -94,13 +98,6 @@ a.pure-button-primary:hover {
   display: block;
 }
 
-.splash-head .links a {
-  margin: 10px 0;
-  text-align: left;
-  /*width: 100%;
-  margin: 20px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 4rem;
-  font-size: 1.8rem;*/
+.movie-container {
+  height: 80vh;
 }
