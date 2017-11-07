@@ -6,7 +6,7 @@
   <meta name="description" content='Directors Cut - New album "Cycles" out now'>
   <title>Directors Cut - New album "Cycles" out now</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 
   <!--[if lte IE 8]>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
@@ -19,6 +19,9 @@
 
   <!-- Vue.js -->
   <script src="js/vendors/vue.js"></script>
+
+  <!-- Songkick -->
+  <script src="http://widget.songkick.com/widget.js"></script>
 
   <!--[if lte IE 8]>
     <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
@@ -49,54 +52,44 @@
   </div>
 </div>
 
-<div class="content-wrapper">
+<div id="app" class="content-wrapper">
   <h2 class="splash-subhead">Cycles - Out Now</h2>
-  <div class="content">
-    <h2 class="content-head is-center">Get the LP</h2>
-    <div class="pure-g l-box-lrg ">
-      <div class="pure-u-1 pure-u-md-1-5 pure-u-xl-1-4"></div>
-      <div class="pure-u-1 pure-u-md-3-5 pure-u-xl-1-2">
-        <div class="pure-g lp-container">
-          <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="cover pure-u-1">
-            <img src="img/cycles_cover.jpg" alt="Cycles album cover" class="pure-img-responsive">
+
+  <block div-id="music">
+    <span slot="header">Get the LP</span>
+    <div slot="body" class="pure-g lp-container">
+      <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="cover pure-u-1">
+        <img src="img/cycles_cover.jpg" alt="Cycles album cover" class="pure-img-responsive">
+      </a>
+      <div class="album-links pure-u-1">
+        <div class="pure-g">
+          <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="pure-button pure-button-primary pure-u-11-24">
+            Listen
+            <i class='fa fa-music'></i>
           </a>
-          <div class="album-links pure-u-1">
-            <div class="pure-g">
-              <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="pure-button pure-button-primary pure-u-11-24">
-                Listen
-                <i class='fa fa-music'></i>
-              </a>
-              <span class="pure-u-2-24"></span>
-              <a href="https://hellprod.bandcamp.com/album/cycles" class="pure-button pure-button-primary pure-u-11-24">
-                Buy
-                <i class='fa fa-shopping-cart'></i>
-              </a>
-            </div>
-          </div>
+          <span class="pure-u-2-24"></span>
+          <a href="https://hellprod.bandcamp.com/album/cycles" class="pure-button pure-button-primary pure-u-11-24">
+            Buy
+            <i class='fa fa-shopping-cart'></i>
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </block>
 
-  <div id="app">
-    <block :is-dark="true">
-      <span slot="header">See the movie</span>
-      <iframe slot="body" width="100%" height="100%" src="https://www.youtube.com/embed/4EXz4U69cHE?list=PLgQ_OqGuVfoFGftsJT6eFnPm97SlfVcUt&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-    </block>
-  </div>
-
-
-
-  <div id="tour" class="content">
-    <h2 class="content-head is-center">Tour</h2>
-    <div class="pure-g">
-      <div class="pure-u-0 pure-u-md-1-5"></div>
-      <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-        <a href="http://www.songkick.com/artists/61299" class="songkick-widget" data-theme="light" data-track-button="on" data-detect-style="true" data-font-color="#34495e" data-background-color="transparent">Directors Cut tour dates</a>
-        <script src="//widget.songkick.com/widget.js"></script>
-      </div>
+  <block div-id="movie" :is-dark="true">
+    <span slot="header">See the movie</span>
+    <div slot="body" class="movie-container">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4EXz4U69cHE?list=PLgQ_OqGuVfoFGftsJT6eFnPm97SlfVcUt&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
     </div>
-  </div>
+  </block>
+
+  <block div-id="tour">
+    <span slot="header">Tour</span>
+    <div slot="body">
+      <a href="http://www.songkick.com/artists/61299" class="songkick-widget" data-theme="light" data-track-button="on" data-detect-style="true" data-font-color="#34495e" data-background-color="transparent">Directors Cut tour dates</a>
+    </div>
+  </block>
 
   <!-- <div class="content">
     <h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>
@@ -189,13 +182,13 @@
 
   <!-- Vue templates -->
   <script type="text/x-template" id="block-template">
-    <div id="movie" class="content" :class="{ 'content--dark': isDark }">
+    <div :id="divId" class="content" :class="{ 'content--dark': isDark }">
       <h2 class="content-head is-center">
         <slot name="header"></slot>
       </h2>
       <div class="pure-g">
         <div class="pure-u-0 pure-u-md-1-5"></div>
-        <div class="movie-container l-box-lrg pure-u-1 pure-u-md-3-5">
+        <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
           <slot name="body"></slot>
         </div>
       </div>
