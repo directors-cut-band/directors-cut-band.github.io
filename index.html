@@ -17,22 +17,23 @@
 
   <script src="https://use.fontawesome.com/d7271c6793.js"></script>
 
-  <!-- Lib -->
+  <!-- Vendors JS -->
   <script defer src="js/vendors/jquery-3.2.1.min.js"></script>
+  <script defer src="js/vendors/jquery.fullpage.js"></script>
 
   <!-- Vue.js -->
-  <script defer src="js/vendors/vue.js"></script>
+  <script defer src="js/vendors/vue.js"></script> 
 
   <!-- Songkick -->
   <script src="http://widget.songkick.com/widget.js"></script>
 
   <!-- Vue templates -->
   <script defer type="text/x-template" id="block-template">
-    <section :id="divId" class="content" :class="{ 'content--dark': isDark }">
+    <section :id="divId" class="section content" :class="contentClass">
       <h2 class="content-head is-center">
         <slot name="header"></slot>
       </h2>
-      <div class="pure-g">
+      <div class="content-body pure-g">
         <div class="pure-u-0 pure-u-md-1-5"></div>
         <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
           <slot name="body"></slot>
@@ -56,60 +57,62 @@
     <link rel="stylesheet" href="css/layouts/marketing.css">
   <!--<![endif]-->
 
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" type="text/css" href="css/vendors/jquery.fullpage.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div class="header">
   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-    <ul class="pure-menu-list">
-      <li class="pure-menu-item pure-menu-selected"><a href="#music" class="pure-menu-link">Listen</a></li>
-      <li class="pure-menu-item"><a href="#movie" class="pure-menu-link">Watch</a></li>
-      <li class="pure-menu-item"><a href="#tour" class="pure-menu-link">Tour</a></li>
+    <ul id="menu" class="pure-menu-list">
+      <li class="pure-menu-item"><a href="#home" data-menuanchor="home" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item"><a href="#music" data-menuanchor="music" class="pure-menu-link">Listen</a></li>
+      <li class="pure-menu-item"><a href="#movie" data-menuanchor="movie" class="pure-menu-link">Watch</a></li>
+      <li class="pure-menu-item"><a href="#tour" data-menuanchor="tour" class="pure-menu-link">Tour</a></li>
     </ul>
   </div>
 </div>
 
+<div class="splash-container"></div>
 
-<div class="splash-container">
-  <div class="splash">
-    <h1 class="splash-head">Directors Cut</h1>
-  </div>
-</div>
+<div id="app">
+  <block variant="transparent">
+    <div slot="body" class="splash">
+      <h1 class="splash-head">Directors Cut</h1>
+      <h2 class="splash-subhead">Cycles - Out Now</h2>
+    </div>
+  </block>
 
-<div id="app" class="content-wrapper">
-  <h2 class="splash-subhead">Cycles - Out Now</h2>
 
-  <block div-id="music">
+  <block>
     <span slot="header">Get the LP</span>
     <div slot="body" class="pure-g lp-container">
-      <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="cover pure-u-1">
+      <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="cover pure-u-1-2">
         <img src="img/cycles_cover.jpg" alt="Cycles album cover" class="pure-img-responsive">
       </a>
-      <div class="album-links pure-u-1">
-        <div class="pure-g">
-          <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="pure-button pure-button-primary pure-u-11-24">
-            Listen
-            <i class='fa fa-music'></i>
-          </a>
-          <span class="pure-u-2-24"></span>
-          <a href="https://hellprod.bandcamp.com/album/cycles" class="pure-button pure-button-primary pure-u-11-24">
-            Buy
-            <i class='fa fa-shopping-cart'></i>
-          </a>
-        </div>
+      <div class="album-links pure-u-1-2">
+        <a href="https://directorscutband.bandcamp.com/album/cycles-2" class="pure-button pure-button-primary">
+          Listen
+          <i class='fa fa-music'></i>
+        </a>
+        <br/>
+        <a href="https://hellprod.bandcamp.com/album/cycles" class="pure-button pure-button-primary">
+          Buy
+          <i class='fa fa-shopping-cart'></i>
+        </a>
       </div>
     </div>
   </block>
 
-  <block div-id="movie" :is-dark="true">
+  <block variant="dark">
     <span slot="header">See the movie</span>
     <div slot="body" class="movie-container">
       <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4EXz4U69cHE?list=PLgQ_OqGuVfoFGftsJT6eFnPm97SlfVcUt&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </block>
 
-  <block div-id="tour">
+  <block>
     <span slot="header">Tour</span>
     <div slot="body">
       <a href="http://www.songkick.com/artists/61299" class="songkick-widget" data-theme="light" data-track-button="on" data-detect-style="true" data-font-color="#34495e" data-background-color="transparent">Directors Cut tour dates</a>

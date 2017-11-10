@@ -4,9 +4,19 @@ Vue.component('block', {
     divId: {
       type: String
     },
-    isDark: {
-      type: Boolean,
-      default: false
+    variant: {
+      type: String
+    }
+  },
+  computed: {
+    contentClass: function() {
+      if (this.variant == 'dark') {
+        return 'content--dark'
+      } else if (this.variant == 'transparent') {
+        return 'content--transparent'
+      } else {
+        return ''
+      }
     }
   }
 })
